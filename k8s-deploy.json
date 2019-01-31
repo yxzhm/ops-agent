@@ -1,0 +1,53 @@
+{
+    "apiVersion": "extensions/v1beta1",
+    "kind": "DaemonSet",
+    "metadata": {
+        "namespace": "devops",
+        "name": "ops-agent"
+    },
+    "spec": {
+        "template": {
+            "metadata": {
+                "labels": {
+                    "name": "ops-agent",
+                    "app": "ops-agent"
+                }
+            },
+            "spec": {
+                "terminationGracePeriodSeconds": 180,
+                "containers": [
+                    {
+                        "image": "yxzhm/ops-agent:1.0",
+                        "name": "ops-agent",
+                        "volumeMounts": [
+                            {
+                                "readOnly": false,
+                                "mountPath": "/var/opt/nuance/ncs/userdata",
+                                "name": "user-data"
+                            }
+                        ],
+                        "env": [
+                            {
+                                "value": "/var/opt/nuance/ncs/userdata/",
+                                "name": "ProfilePath"
+                            },
+                            {
+                                "value": "16:30",
+                                "name": "RunTime"
+                            }
+                        ]
+                        
+                    }
+                ],
+                "volumes": [
+                  {
+                      "hostPath": {
+                          "path": "/var/opt/nuance/ncs/userdata"
+                      },
+                      "name": "user-data"
+                  }
+              ]
+            }
+        }
+    }
+}
