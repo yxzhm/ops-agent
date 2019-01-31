@@ -1,0 +1,10 @@
+
+
+ [[constraint]]
+   name = "github.com/jasonlvhit/gocron"
+   branch = "master"
+   source = "github.com/jasonlvhit/gocron"
+
+[prune]
+  go-tests = true
+  unused-packages = true
