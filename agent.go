@@ -17,12 +17,12 @@ func main() {
 
 	runTime := os.Getenv("RunTime")
 	if runTime == "" {
-		runTime = "16:00"
+		runTime = "22:30"
 	}
 	Info.Printf("RunTime is %s", runTime)
 
 	delProfile(profilePath, true)
-	gocron.Every(1).Day().At(runTime).Do(delProfile, profilePath, false)
+	gocron.Every(1).Sunday().At(runTime).Do(delProfile, profilePath, false)
 	<-gocron.Start()
 }
 
