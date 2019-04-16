@@ -17,7 +17,7 @@
                 "terminationGracePeriodSeconds": 180,
                 "containers": [
                     {
-                        "image": "yxzhm/ops-agent:1.0",
+                        "image": "yxzhm/ops-agent:2.0",
                         "name": "ops-agent",
                         "volumeMounts": [
                             {

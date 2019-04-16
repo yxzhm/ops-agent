@@ -19,7 +19,7 @@ func main() {
 	if runTime == "" {
 		runTime = "22:30"
 	}
-	Info.Printf("RunTime is %s", runTime)
+	Info.Printf("RunTime is %s at sunday", runTime)
 
 	delProfile(profilePath, true)
 	gocron.Every(1).Sunday().At(runTime).Do(delProfile, profilePath, false)
